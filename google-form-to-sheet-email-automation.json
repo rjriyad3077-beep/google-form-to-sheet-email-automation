@@ -1,0 +1,191 @@
+{
+  "name": "google-form-to-sheet-email-automation",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Please Submit Your Information",
+        "formDescription": "Do not any wrong please chack agin then submit",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What is your Name?"
+            },
+            {
+              "fieldLabel": "Gmail",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "What is your Id?",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "Breaf Descution About you"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        -256,
+        -16
+      ],
+      "id": "f70a8788-0239-4ee9-9d06-63211f1e3c61",
+      "name": "On form submission",
+      "webhookId": "4c4217cf-4a9a-42da-a080-b9ec2e3d2aac"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1ITNiUjN8pyjEJtrTcqNx3IMxuXkLYK67Gyc874MYBPw",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ITNiUjN8pyjEJtrTcqNx3IMxuXkLYK67Gyc874MYBPw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name ": "={{ $json['What is your Name?'] }}",
+            "Gmail": "={{ $json.Gmail }}",
+            "Id": "={{ $json['What is your Id?'] }}"
+          },
+          "matchingColumns": [
+            "Gmail"
+          ],
+          "schema": [
+            {
+              "id": "Name ",
+              "displayName": "Name ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Gmail",
+              "displayName": "Gmail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Id",
+              "displayName": "Id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -16,
+        -80
+      ],
+      "id": "a8686bd5-f2e3-4c41-a488-da5864ea9fa4",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "9MUA03xzYZog9R8k",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Gmail }}",
+        "subject": "=hi  {{ $json['Name '] }}",
+        "message": "hjgvkuhbg,",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        -80
+      ],
+      "id": "9af56e8a-7d3e-4288-9e08-4708f27b9cca",
+      "name": "Send a message",
+      "webhookId": "e0aff173-499b-4247-8ac0-76e70f773ee4",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "EVldKRFsDO6MnenH",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "On form submission": [
+      {
+        "json": {
+          "What is your Name?": "jhwfkd",
+          "Gmail": "rokonurjamanriyad@gmail.com",
+          "What is your Id?": 22,
+          "Breaf Descution About you": "jdkfsanl;dj",
+          "submittedAt": "2026-04-13T14:13:38.543-04:00",
+          "formMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "e49226f2-381f-477b-ae8b-e88b4ab80e70",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a568ad43c80ca4162599aa13ded5aa1e64d0e5fde8e60f0d5034f483a3713553"
+  },
+  "id": "S1uQd7m6xuwA8jMn",
+  "tags": []
+}
