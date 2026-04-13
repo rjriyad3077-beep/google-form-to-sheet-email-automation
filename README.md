@@ -1,2 +1,30 @@
-# google-form-to-sheet-email-automation
-Automates Google Form submissions by saving responses to Google Sheets and sending email notifications via Gmail. Built using Make (Integromat). Helps streamline data collection, storage, and instant alerts.
+# 🚀 Google Form to Sheet & Email Automation
+
+Automates Google Form submissions by saving responses to Google Sheets and sending email notifications via Gmail.
+
+---
+
+## ⚙️ Workflow
+- 📝 Form submission triggers the automation  
+- 📊 Data stored in Google Sheets  
+- 📧 Email notification sent via Gmail  
+
+---
+
+## 🛠 Tools Used
+- Google Forms  
+- Google Sheets  
+- Gmail  
+- Make (Integromat)  
+
+---
+
+## 📸 Workflow Preview
+![Workflow](Screenshot 2026-04-14 002210.png)
+
+---
+
+## 🎯 Use Cases
+- Lead collection  
+- Contact forms  
+- Order tracking  
