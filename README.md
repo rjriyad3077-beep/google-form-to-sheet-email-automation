@@ -20,7 +20,7 @@ Automates Google Form submissions by saving responses to Google Sheets and sendi
 ---
 
 ## 📸 Workflow Preview
-![Workflow](Screenshot 2026-04-14 002210.png)
+![Workflow](aa.png)
 
 
 ---
